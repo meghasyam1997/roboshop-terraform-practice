@@ -8,6 +8,10 @@ module "vpc" {
   env = var.env
 }
 
-output "vpc" {
-  value = module.vpc
-}
+#module "app" {
+#  source = "git::https://github.com/meghasyam1997/tf-module-app-practice.git"
+#
+#  for_each = var.app
+#  instance_type = each.value["instance_type"]
+#  name = each.value["name"]
+#}
