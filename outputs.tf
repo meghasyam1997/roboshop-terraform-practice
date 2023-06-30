@@ -1,3 +1,3 @@
-output "subnets_idss" {
+output "vpc" {
   value = lookup(module.vpc, "main",null)
 }
