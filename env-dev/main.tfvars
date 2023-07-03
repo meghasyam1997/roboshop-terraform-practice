@@ -1,5 +1,5 @@
 env = "dev"
-
+kms_arn = "arn:aws:kms:us-east-1:844746520101:key/f2e4231a-4405-4fcc-9d18-bb7c5e81348f"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -58,5 +58,18 @@ app = {
     name = "payment"
     instance_type = "t3.small"
     subnet_name = "app"
+  }
+}
+
+docdb = {
+  main = {
+    name           = "docdb"
+    engine         = "docdb"
+    engine_version = "4.0.0"
+    instance_class = "db.t3.medium"
+    instance_count = 1
+    subnet_name    = "db"
+    allow_db_cidr  = "app"
+    port           = 27017
   }
 }
