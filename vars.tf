@@ -2,5 +2,5 @@ variable "env" {}
 variable "vpc" {}
 variable "app" {}
 variable "kms_arn" {}
-variable "docdb" {}
+#variable "docdb" {}
 variable "bastion_cidr" {}
