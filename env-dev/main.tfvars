@@ -1,6 +1,9 @@
-env          = "dev"
-kms_arn      = "arn:aws:kms:us-east-1:844746520101:key/f2e4231a-4405-4fcc-9d18-bb7c5e81348f"
-bastion_cidr = "172.31.13.110/32"
+env               = "dev"
+kms_arn           = "arn:aws:kms:us-east-1:844746520101:key/f2e4231a-4405-4fcc-9d18-bb7c5e81348f"
+bastion_cidr      = "172.31.13.110/32"
+default_vpc_id    = "vpc-02fd95dec0b93d08a"
+default_vpc_cidr  = "172.31.0.0/16"
+default_vpc_rt_id = "rtb-04788961f7eb75f09"
 
 vpc = {
   main = {
@@ -49,31 +52,31 @@ app = {
     max_size         = 10
     min_size         = 2
   }
-    #  cart = {
-    #    name           = "cart"
-    #    instance_type  = "t3.small"
-    #    subnet_name    = "app"
-    #    allow_app_cidr = "web"
-    #  }
-    #  user = {
-    #    name           = "user"
-    #    instance_type  = "t3.small"
-    #    subnet_name    = "app"
-    #    allow_app_cidr = "web"
-    #  }
-    #  shipping = {
-    #    name           = "shipping"
-    #    instance_type  = "t3.small"
-    #    subnet_name    = "app"
-    #    allow_app_cidr = "web"
-    #  }
-    #  payment = {
-    #    name           = "payment"
-    #    instance_type  = "t3.small"
-    #    subnet_name    = "app"
-    #    allow_app_cidr = "web"
-    #  }
-  }
+  #  cart = {
+  #    name           = "cart"
+  #    instance_type  = "t3.small"
+  #    subnet_name    = "app"
+  #    allow_app_cidr = "web"
+  #  }
+  #  user = {
+  #    name           = "user"
+  #    instance_type  = "t3.small"
+  #    subnet_name    = "app"
+  #    allow_app_cidr = "web"
+  #  }
+  #  shipping = {
+  #    name           = "shipping"
+  #    instance_type  = "t3.small"
+  #    subnet_name    = "app"
+  #    allow_app_cidr = "web"
+  #  }
+  #  payment = {
+  #    name           = "payment"
+  #    instance_type  = "t3.small"
+  #    subnet_name    = "app"
+  #    allow_app_cidr = "web"
+  #  }
+}
 #  docdb = {
 #    main = {
 #      name           = "docdb"
