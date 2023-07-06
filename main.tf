@@ -25,6 +25,7 @@ module "app" {
 
   env          = var.env
   bastion_cidr = var.bastion_cidr
+  tags         = local.tags
 }
 
 #module "docdb" {
