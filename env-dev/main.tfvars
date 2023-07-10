@@ -52,40 +52,105 @@ app = {
     max_size         = 10
     min_size         = 2
   }
-  #  cart = {
-  #    name           = "cart"
-  #    instance_type  = "t3.small"
-  #    subnet_name    = "app"
-  #    allow_app_cidr = "web"
-  #  }
-  #  user = {
-  #    name           = "user"
-  #    instance_type  = "t3.small"
-  #    subnet_name    = "app"
-  #    allow_app_cidr = "web"
-  #  }
-  #  shipping = {
-  #    name           = "shipping"
-  #    instance_type  = "t3.small"
-  #    subnet_name    = "app"
-  #    allow_app_cidr = "web"
-  #  }
-  #  payment = {
-  #    name           = "payment"
-  #    instance_type  = "t3.small"
-  #    subnet_name    = "app"
-  #    allow_app_cidr = "web"
-  #  }
-}
-#  docdb = {
-#    main = {
-#      name           = "docdb"
-#      engine         = "docdb"
-#      engine_version = "4.0.0"
-#      instance_class = "db.t3.medium"
-#      instance_count = 1
-#      subnet_name    = "db"
-#      allow_db_cidr  = "app"
-#      port           = 27017
-#    }
+#  cart = {
+#    name           = "cart"
+#    instance_type  = "t3.small"
+#    subnet_name    = "app"
+#    allow_app_cidr = "web"
+#    desired_capacity = 2
+#    max_size         = 10
+#    min_size         = 2
 #  }
+#  user = {
+#    name           = "user"
+#    instance_type  = "t3.small"
+#    subnet_name    = "app"
+#    allow_app_cidr = "web"
+#    desired_capacity = 2
+#    max_size         = 10
+#    min_size         = 2
+#  }
+#  shipping = {
+#    name           = "shipping"
+#    instance_type  = "t3.small"
+#    subnet_name    = "app"
+#    allow_app_cidr = "web"
+#    desired_capacity = 2
+#    max_size         = 10
+#    min_size         = 2
+#  }
+#  payment = {
+#    name           = "payment"
+#    instance_type  = "t3.small"
+#    subnet_name    = "app"
+#    allow_app_cidr = "web"
+#    desired_capacity = 2
+#    max_size         = 10
+#    min_size         = 2
+#  }
+}
+
+docdb = {
+  main = {
+    name           = "docdb"
+    engine         = "docdb"
+    engine_version = "4.0.0"
+    instance_class = "db.t3.medium"
+    instance_count = 1
+    subnet_name    = "db"
+    allow_db_cidr  = "app"
+    port           = 27017
+  }
+}
+
+rds = {
+  main = {
+    name           = "rds"
+    engine         = "aurora-mysql"
+    engine_version = "5.7.mysql_aurora.2.11.2"
+    instance_class = "db.t3.small"
+    instance_count = 1
+    subnet_name    = "db"
+    allow_db_cidr  = "app"
+    port           = 3306
+  }
+}
+
+elasticache = {
+  main = {
+    name                    = "elasticache"
+    engine                  = "redis"
+    engine_version          = "6.x"
+    node_type               = "cache.t3.micro"
+    num_node_groups         = 1
+    replicas_per_node_group = 1
+    subnet_name             = "db"
+    allow_db_cidr           = "app"
+    port                    = 6379
+  }
+}
+
+rabbitmq = {
+  main = {
+    name          = "rabbitmq"
+    port          = 5672
+    subnet_name   = "db"
+    allow_db_cidr = "app"
+    instance_type = "t3.small"
+  }
+}
+
+alb = {
+  public = {
+    name           = "public"
+    subnet_name    = "public"
+    allow_alb_cidr = null
+    internal       = false
+  }
+  private = {
+    name           = "private"
+    subnet_name    = "app"
+    allow_alb_cidr = "web"
+    internal       = true
+  }
+}
